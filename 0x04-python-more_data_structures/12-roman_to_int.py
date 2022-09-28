@@ -13,6 +13,7 @@ def roman_to_int(roman_string):
 
         if prev_value >= curr_value:
             int_value += prev_value
-        int_value -= prev_value
+        else:
+            int_value -= prev_value
 
     return int_value

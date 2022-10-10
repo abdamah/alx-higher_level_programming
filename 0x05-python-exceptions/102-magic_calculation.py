@@ -1,14 +1,14 @@
 #!/usr/bin/python3
 def magic_calculation(a, b):
     """Magic function with try-catch block."""
-    c = 0
-    for num in range(1, 3):
+    result = 0
+    for i in range(1, 3):
         try:
-            if (num > a):
+            if (i > a):
                 raise Exception('Too far')
             else:
-                c += a ** b / num
+                result += a ** b / i
         except:
-            c = a + b
+            result = a + b
             pass
-    return (c)
+    return (result)

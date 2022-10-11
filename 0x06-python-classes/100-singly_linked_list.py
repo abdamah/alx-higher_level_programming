@@ -1,12 +1,12 @@
 #!/usr/bin/python3
-"""Module containing  class Node that defines a node of a Singly linked list."""
+"""Module containing the Node and SinglyLinkedList class."""
 
 
 class Node:
-    """The class Node designed for Queue, Singlylinked list and Stack."""
+    """The node class designed for queue, singlylinked list, stack."""
 
     def __init__(self, data, next_node=None):
-        """Initialization of the Node.
+        """Initialization of the node.
         Args:
             data (int): The integer value to be stored in the node.
             next_node (:obj:'Node'): The next node.
@@ -40,10 +40,10 @@ class Node:
 
 
 class SinglyLinkedList:
-    """The Singly linked list class"""
+    """The singlylinked list class"""
 
     def __init__(self):
-        """Initialization of the Singly linked list."""
+        """Initialization of the singly linked list."""
         self.__head = None
 
     def sorted_insert(self, value):
@@ -67,12 +67,12 @@ class SinglyLinkedList:
         Returns:
             str: The string of integers values
         """
-        result = ""
+        string = ""
         if self.__head is not None:
-            result = str(self.__head.data)
+            string = str(self.__head.data)
             curr_n = self.__head.next_node
             while curr_n is not None:
-                result += "\n"
-                result += str(curr_n.data)
+                string += "\n"
+                string += str(curr_n.data)
                 curr_n = curr_n.next_node
-        return result
+        return string

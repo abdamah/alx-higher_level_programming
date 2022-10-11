@@ -1,9 +1,10 @@
 #!/usr/bin/python3
-"""Working with python OOPS."""
+"""
+New class Square
+"""
 
 
 class Square:
-    """ Define Square classs with size attribute"""
+    """ Defines a Square """
     def __init__(self, size):
         self.__size = size
-

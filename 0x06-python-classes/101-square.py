@@ -23,7 +23,7 @@ class Square:
             str: A string representing a square made of hashtags.
         """
         __my_string = ""
-        if self.__size is not 0:
+        if self.__size != 0:
             for y in range(self.__position[1]):
                 __my_string += '\n'
             for i in range(self.__size):
@@ -31,7 +31,7 @@ class Square:
                     __my_string += ' '
                 for j in range(self.__size):
                     __my_string += '#'
-                if i is not self.__size - 1:
+                if i != self.__size - 1:
                     __my_string += '\n'
         return __my_string
 
@@ -57,7 +57,7 @@ class Square:
 
     @position.setter
     def position(self, position):
-        if (not isinstance(position, tuple) or len(position) is not 2 or
+        if (not isinstance(position, tuple) or len(position) != 2 or
             not isinstance(position[0], int) or
                 not isinstance(position[1], int) or position[0] < 0 or
                 position[1] < 0):
@@ -76,7 +76,7 @@ class Square:
         """Prints a square with hashtags using the 'size'. Uses 'position' to
         offset where the printing should begin. The x, y coordinate in
         'position' is the location of the top left corner of the square."""
-        if self.__size is not 0:
+        if self.__size != 0:
             for y in range(self.__position[1]):
                 print()
             for i in range(self.__size):

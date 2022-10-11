@@ -1,14 +1,9 @@
 #!/usr/bin/python3
-""" Working with oops in python"""
+"""Working with python OOPS."""
 
 
-class Square():
-    """Class representing a square"""
-
+class Square:
+    """ Define Square classs with size attribute"""
     def __init__(self, size):
-        """ initialize the class
-        Args:
-           size (int): size of the square
-        """
         self.__size = size
 

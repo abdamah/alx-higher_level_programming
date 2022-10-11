@@ -1,10 +1,9 @@
 #!/usr/bin/python3
 """
-New design for Square Class
+Creating Square class  
 """
 
 
 class Square:
     """ Empty Square class """
     pass
-

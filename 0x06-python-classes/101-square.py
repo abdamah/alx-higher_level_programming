@@ -51,7 +51,8 @@ class Square:
 
     @property
     def position(self):
-        """:obj:'tuple' of int: x, y 
+        """
+	obj:'tuple' of int: x, y 
 	coordinate offset when printing the square.
         """
         return self.__position

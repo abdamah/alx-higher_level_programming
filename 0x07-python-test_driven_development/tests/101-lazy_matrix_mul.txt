@@ -7,7 +7,7 @@ Using ``lazy_matrix_mul``
 
 Import ``lazy_matrix_mul`` from the ``101-lazy_matrix_mul`` module:
 
-	>>> matrix_mul = lazy_matrix_mul= __import__('101-lazy_matrix_mul').lazy_matrix_mul
+	>>> matrix_mul = __import__('101-lazy_matrix_mul').lazy_matrix_mul
 	>>> import numpy as np
 
 Test arguments where list of lists contains only integers:

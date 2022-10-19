@@ -14,7 +14,7 @@ Test arguments where list of lists contains only integers:
 
 	>>> A = np.array([[1, 2], [3, 4]])
 	>>> B = np.array([[1, 2], [3, 4]])
-	>>> print(matrix_mul(A, B)
+	>>> print(matrix_mul(A, B))
 	[[ 7 10]
          [15 22]]
 

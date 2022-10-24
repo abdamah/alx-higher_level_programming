@@ -1,0 +1,233 @@
+===========================
+How to Use lazy_matrix_mul.py
+===========================
+
+Using ``lazy_matrix_mul``
+-------------------
+
+Import ``lazy_matrix_mul`` from the ``101-lazy_matrix_mul`` module:
+
+	>>> matrix_mul = __import__('101-lazy_matrix_mul').lazy_matrix_mul
+	>>> import numpy as np
+
+Test arguments where list of lists contains only integers:
+
+	>>> A = np.array([[1, 2], [3, 4]])
+	>>> B = np.array([[1, 2], [3, 4]])
+	>>> print(matrix_mul(A, B))
+	[[ 7 10]
+         [15 22]]
+
+Test arguments where list of lists contains only floats:
+
+	>>> A = np.array([[1.11, 2.75], [3.876, 4.12]])
+	>>> B = np.array([[1.424, 2.29], [3.3, 4.4]])
+	>>> print(matrix_mul(A, B))
+	[[10.65564  14.6419  ]
+         [19.115424 27.00404 ]]
+
+Test arguments where list of lists contain combinations of integers and floats:
+
+	>>> A = np.array([[1.564, 2], [3.5, 4]])
+	>>> B = np.array([[1.111, 2.44], [3, 4]])
+	>>> print(matrix_mul(A, B))
+	[[ 7.737604 11.81616 ]
+         [15.8885   24.54    ]]
+
+Test arguments that are not list:
+
+	>>> print(matrix_mul("Not matrix", 5))
+ 	Traceback (most recent call last):
+	ValueError: Scalar operands are not allowed, use '*' instead
+
+Test no arguments:
+
+	>>> print(matrix_mul())
+	Traceback (most recent call last):
+	TypeError: lazy_matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'
+
+Test with only one argument:
+
+	>>> A= np.array([[1, 2, 3]])
+	>>> print(matrix_mul(A))
+	Traceback (most recent call last):
+	TypeError: lazy_matrix_mul() missing 1 required positional argument: 'm_b'
+
+Test combination of arguments that is a list and not a list:
+
+	>>> A = np.array("Not matrix")
+	>>> B = np.array([[1, 2]])
+	>>> print(matrix_mul(A, B))
+	Traceback (most recent call last):
+	ValueError: Scalar operands are not allowed, use '*' instead
+
+	>>> A = np.array([[1, 2]])
+	>>> B = np.array("Not matrix")
+	>>> print(matrix_mul(A, B))
+	Traceback (most recent call last):
+	ValueError: Scalar operands are not allowed, use '*' instead
+
+Test arguments that are empty lists:
+
+	>>> A = np.array([])
+	>>> B = np.array([])
+	>>> print(matrix_mul(A, B))
+	0.0
+
+	>>> A = np.array([[]])
+	>>> B = np.array([[]])
+	>>> print(matrix_mul(A, B))
+	... #doctest: +ELLIPSIS
+	Traceback (most recent call last):
+	ValueError: ...
+
+Test combination of arguments that is an empty list and non empty list:
+
+	>>> A = np.array([])
+	>>> B = np.array([[1, 2]])
+	>>> print(matrix_mul(A, B))
+	... # doctest: +ELLIPSIS
+	Traceback (most recent call last):
+	ValueError: ...
+
+	>>> A = np.array([[]])
+	>>> B = np.array([[1, 2]])
+	>>> print(matrix_mul(A, B))
+	... # doctest: +ELLIPSIS
+	Traceback (most recent call last):
+	ValueError: ...
+
+	>>> A = np.array([[1, 2, 3]])
+	>>> B = np.array([])
+	>>> print(matrix_mul(A, B))
+	... # doctest: +ELLIPSIS
+	Traceback (most recent call last):
+	ValueError: ...
+
+	>>> A = np.array([[1, 2, 3]])
+	>>> B = np.array([[]])
+	>>> print(matrix_mul(A, B))
+	... # doctest: +ELLIPSIS
+	Traceback (most recent call last):
+	ValueError: ...
+
+Test arguments where elements in a list of lists is neither int nor float:
+
+	>>> A = np.array([[1, "string"], [3, 4]])
+	>>> B = np.array([[1, "Nope"], [3, 4]])
+	>>> print(matrix_mul(A, B))
+	Traceback (most recent call last):
+	TypeError: invalid data type for einsum
+
+	>>> A = np.array([[1, "string"])
+	>>> B = np.array([3, 4]], [[1, 2], [3, 4]])
+	>>> print(matrix_mul(A, B))
+	Traceback (most recent call last):
+	TypeError: invalid data type for einsum
+
+	>>> A = np.array([[1, 2], [(1, 3), 4]])
+	>>> B = np.array([[1, 2], [3, 4]])
+	>>> print(matrix_mul(A, B))
+	Traceback (most recent call last):
+	ValueError: setting an array element with a sequence.
+
+	>>> A = np.array([[1, 2], [3, 4]])
+	>>> B = np.array([[1, 2], ["string", 4]])
+	>>> print(matrix_mul(A, B))
+	Traceback (most recent call last):
+	TypeError: invalid data type for einsum
+
+	>>> A = np.array([[1, 2], [3, 4]])
+	>>> B = np.array([[1, (5000, 1000)], [3, 4]])
+	>>> print(matrix_mul(A, B))
+	Traceback (most recent call last):
+	ValueError: setting an array element with a sequence.
+
+Test arguments with varying length of rows in the matrices:
+
+	>>> A = np.array([[1, 2], [3, 4, 1]])
+	>>> B = np.array([[1, 2, 3], [3, 4]])
+	>>> print(matrix_mul(A, B))
+	Traceback (most recent call last):
+	ValueError: setting an array element with a sequence.
+
+	>>> A = np.array([[1, 2], [3, 4, 1]])
+	>>> B = np.array([[1, 2], [3, 4]])
+	>>> print(matrix_mul(A, B))
+	Traceback (most recent call last):
+	ValueError: setting an array element with a sequence.
+
+	>>> A = np.array([[1], [3, 4]])
+	>>> B = np.array([[1, 2, 3], [3, 4]])
+	>>> print(matrix_mul(A, B))
+	Traceback (most recent call last):
+	ValueError: setting an array element with a sequence.
+
+	>>> A = np.array([[1, 2], [3, 4]])
+	>>> B = np.array([[1, 2], [3]])
+	>>> print(matrix_mul(A, B))
+	Traceback (most recent call last):
+	ValueError: setting an array element with a sequence.
+
+	>>> A = np.array([[1, 2], [3, 4]])
+	>>> B = np.array([[1, 2, 3], [3, 4]])
+	>>> print(matrix_mul(A, B))
+	Traceback (most recent call last):
+	ValueError: setting an array element with a sequence.
+
+Test order of validation (list > list or list > non empty list or non empty list of lists > only integers or floats > all rows have the same length > len of rows in m_a == len of col in m_b:
+
+	>>> A = np.arrayl([[1, 2], "string"])
+	>>> B = np.arrayl([[1, 2], [3, 4]])
+	>>> print(matrix_mul(A, B))
+	Traceback (most recent call last):
+	ValueError: setting an array element with a sequence
+
+	>>> A = np.array([])
+	>>> B = np.array(["string"])
+	>>> print(matrix_mul(A, B))
+	... # doctest: +ELLIPSIS
+	Traceback (most recent call last):
+	ValueError: ...
+
+	>>> A = np.array([[], []])
+	>>> B = np.array([[1, "string"], [3, 4]])
+	>>> print(matrix_mul(A, B))
+	... # doctest: +ELLIPSIS
+	Traceback (most recent call last):
+	ValueError: ...
+
+	>>> A = np.array([[1, 2], [3, "string"]])
+	>>> B = np.array([[]])
+	>>> print(matrix_mul(A, B))
+	... # doctest: +ELLIPSIS
+	Traceback (most recent call last):
+	ValueError: ...
+
+	>>> A = np.array([[1, 2], [3, "string", 5]])
+	>>> B = np.array([[1, 2], [3, 4]])
+	>>> print(matrix_mul(A, B))
+	Traceback (most recent call last):
+	ValueError: setting an array element with a sequence
+
+	>>> print(matrix_mul([[1, 2], [3, 4]], [[1, 2], [(5000, 19999), 4, 10]]))
+	Traceback (most recent call last):
+	ValueError: setting an array element with a sequence.
+
+	>>> print(matrix_mul([[1, 2, 10], [3, 4, 0, 10]], [[1, 2], [3, 4]]))
+	Traceback (most recent call last):
+	ValueError: setting an array element with a sequence.
+
+	>>> print(matrix_mul([[1, 2, 10], [3, 4, 0]], [[1, 2], [3, 4, 30]]))
+	Traceback (most recent call last):
+	ValueError: setting an array element with a sequence.
+
+	>>> print(matrix_mul([[1, 2, 3], [3, 4, 5]], [[1, 2], [3, 4]]))
+	... # doctest: +ELLIPSIS
+	Traceback (most recent call last):
+	ValueError: ...
+
+	>>> print(matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4], [5, 6]]))
+	... # doctest: +ELLIPSIS
+	Traceback (most recent call last):
+	ValueError: ...

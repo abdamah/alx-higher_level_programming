@@ -22,7 +22,7 @@ in a TypeError.
 
 ::
 
-    >>> bg = BaseGeometry(None)
+    >>> bg = BaseGeometry()
     Traceback (most recent call last):
     TypeError: object() takes no parameters
 

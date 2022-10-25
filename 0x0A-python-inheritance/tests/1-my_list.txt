@@ -155,7 +155,7 @@ will be raised.
 
 ::
 
-    >>> my_list = MyList(["1", "Betty", "Holberton", "5"])
+    >>> my_list = MyList(["Be", "Betty", "Holberton", "Hello"])
     >>> my_list.print_sorted()
     Traceback (most recent call last):
     TypeError: unorderable types: str() < int()

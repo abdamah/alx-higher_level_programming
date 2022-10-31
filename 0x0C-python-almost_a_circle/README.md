@@ -79,5 +79,5 @@ Requirements
 -   You can also test file by file by using this command: `python3 -m unittest tests/test_models/test_base.py`
 -   We strongly encourage you to work together on test cases so that you don't miss any edge case
 
-- **Author**
-- **Abdallah  Mahmoud ** [Abdallah](https://github.com/abdamah)
+### Author
+**Abdallah  Mahmoud** [Abdallah](https://github.com/abdamah)
